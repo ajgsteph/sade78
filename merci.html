@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Merci — SADE France</title>
+<meta name="description" content="Votre demande a bien été envoyée. Nous vous recontacterons sous 48 heures ouvrées.">
+
+<!-- Empêche l'indexation : c'est une page de confirmation transitoire -->
+<meta name="robots" content="noindex,nofollow">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+<!-- Open Graph (au cas où la page serait partagée par erreur) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="SADE France">
+<meta property="og:description" content="Service d'accompagnement des démarches administratives en France.">
+<meta property="og:image" content="https://sade78.fr/assets/og-image.png">
+<meta property="og:locale" content="fr_FR">
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ============================================================
+     STYLES SPÉCIFIQUES PAGE DE CONFIRMATION
+     ============================================================
+     Plein écran centré (no-scroll desktop, scroll sur mobile si besoin).
+     Encadré blanc sur fond bleu charte.
+     ============================================================ */
+
+  /* Section principale : centrer verticalement et horizontalement */
+  .thanks{
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--c-blue);
+    color:var(--c-white);
+    padding:clamp(24px, 5vh, 60px) var(--pad-x);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* Effet décoratif radial en bas à droite (cohérent avec les autres pages) */
+  .thanks::before{
+    content:'';
+    position:absolute;
+    bottom:-200px;right:-200px;
+    width:600px;height:600px;
+    background:radial-gradient(circle,var(--c-indigo) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  /* Et un autre effet en haut à gauche pour équilibrer */
+  .thanks::after{
+    content:'';
+    position:absolute;
+    top:-150px;left:-150px;
+    width:400px;height:400px;
+    background:radial-gradient(circle,var(--c-indigo) 0%,transparent 70%);
+    pointer-events:none;
+  }
+
+  /* Carte centrale */
+  .thanks-card{
+    position:relative;
+    z-index:2;
+    background:var(--c-white);
+    color:var(--c-black);
+    padding:clamp(36px, 6vh, 64px) clamp(28px, 4vw, 56px);
+    max-width:640px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.15);
+  }
+
+  /* Icône check animée */
+  .thanks-icon{
+    width:72px;height:72px;
+    margin:0 auto clamp(20px, 3vh, 28px);
+    background:var(--c-blue);
+    color:var(--c-white);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    animation:popIn .5s cubic-bezier(.2,1.4,.5,1) backwards;
+  }
+  .thanks-icon svg{
+    width:32px;height:32px;
+    stroke-dasharray:24;
+    stroke-dashoffset:24;
+    animation:drawCheck .5s ease forwards .4s;
+  }
+
+  @keyframes popIn{
+    from{transform:scale(0);opacity:0}
+    to{transform:scale(1);opacity:1}
+  }
+  @keyframes drawCheck{
+    to{stroke-dashoffset:0}
+  }
+
+  .thanks-card .eyebrow{
+    color:var(--c-blue);
+    margin-bottom:clamp(10px, 1.5vh, 14px);
+    justify-content:center;
+  }
+  .thanks-card h1{
+    font-size:clamp(28px, 4vw, 42px);
+    margin-bottom:clamp(14px, 2vh, 20px);
+    line-height:1.1;
+  }
+  .thanks-card > p{
+    font-size:clamp(14.5px, 1.1vw, 16.5px);
+    color:var(--c-text-muted);
+    line-height:1.7;
+    margin-bottom:clamp(8px, 1.5vh, 16px);
+    max-width:480px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .thanks-card > p strong{color:var(--c-black)}
+
+  /* Boutons d'action */
+  .thanks-actions{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:clamp(24px, 4vh, 36px);
+    padding-top:clamp(20px, 3vh, 28px);
+    border-top:1px solid var(--c-gray);
+  }
+
+  /* Coordonnées rapides en bas */
+  .thanks-quick{
+    margin-top:clamp(20px, 3vh, 28px);
+    font-size:13px;
+    color:var(--c-text-muted);
+    line-height:1.6;
+  }
+  .thanks-quick a{
+    color:var(--c-blue);
+    border-bottom:1px solid var(--c-blue);
+    padding-bottom:1px;
+  }
+  .thanks-quick a:hover{color:var(--c-indigo)}
+
+  /* Mobile */
+  @media (max-width:600px){
+    .thanks-card{padding:36px 24px}
+    .thanks-icon{width:60px;height:60px}
+    .thanks-icon svg{width:26px;height:26px}
+    .thanks-card h1{font-size:26px}
+    .thanks-actions{flex-direction:column;align-items:stretch}
+    .thanks-actions .btn{justify-content:center}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo-link" aria-label="SADE France - Accueil">
+      <img src="assets/logo-cropped.png" alt="SADE France" class="logo-img">
+    </a>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="cabinet.html">Le cabinet</a></li>
+        <li><a href="services.html">Nos services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="btn">
+      Prendre RDV
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <!-- DRAWER MOBILE -->
+  <nav class="nav-mobile" id="navMobile">
+    <div class="nav-mobile-head">
+      <a href="index.html" class="logo-link"><img src="assets/logo-light-text.png" alt="SADE France" class="logo-img"></a>
+      <button class="nav-mobile-close" id="navClose" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <a href="index.html">Accueil</a>
+    <a href="cabinet.html">Le cabinet</a>
+    <a href="services.html">Nos services</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn">Prendre RDV</a>
+  </nav>
+
+  <!-- CONTENU -->
+  <main class="main">
+    <section class="thanks">
+      <div class="thanks-card">
+
+        <!-- Icône de validation animée -->
+        <div class="thanks-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 12 10 18 20 6"/>
+          </svg>
+        </div>
+
+        <div class="eyebrow">Demande envoyée</div>
+        <h1>Merci ! Votre message est bien arrivé.</h1>
+        <p>Nous avons bien reçu votre demande et nous reviendrons vers vous <strong>sous 48 heures ouvrées</strong> pour échanger sur votre situation.</p>
+        <p>En attendant, n'hésitez pas à explorer le site pour mieux nous connaître.</p>
+
+        <!-- Boutons : retour accueil ou voir les services -->
+        <div class="thanks-actions">
+          <a href="index.html" class="btn">
+            Retour à l'accueil
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="services.html" class="btn" style="background:var(--c-black)">
+            Voir nos services
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Coordonnées rapides en cas d'urgence -->
+        <div class="thanks-quick">
+          Une question urgente ? <a href="tel:+33649638403">+33 6 49 63 84 03</a> · <a href="mailto:contact@sade78.fr">contact@sade78.fr</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="copy">© 2026 SADE FRANCE — Tous droits réservés</div>
+    <div class="footer-links">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="#" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Menu mobile (identique aux autres pages)
+  const burger = document.getElementById('burger');
+  const navMobile = document.getElementById('navMobile');
+  const navClose = document.getElementById('navClose');
+  function toggleMenu(open){
+    burger.classList.toggle('is-open', open);
+    navMobile.classList.toggle('is-open', open);
+    document.body.classList.toggle('no-scroll', open);
+  }
+  burger.addEventListener('click',()=>toggleMenu(!navMobile.classList.contains('is-open')));
+  navClose.addEventListener('click',()=>toggleMenu(false));
+  navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+</script>
+</body>
+</html>

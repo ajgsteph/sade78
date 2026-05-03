@@ -5,8 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Contact — SADE France</title>
 <meta name="description" content="Prenez rendez-vous avec SADE France pour un premier entretien gratuit et confidentiel.">
+
+<!-- Favicon (juste le S dans l'hexagone bleu) -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+<!-- Open Graph (partage Facebook, WhatsApp, LinkedIn, Discord, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sade78.fr/contact.html">
+<meta property="og:title" content="Contact — SADE France">
+<meta property="og:description" content="Prenez rendez-vous avec SADE France pour un premier entretien gratuit et confidentiel.">
+<meta property="og:image" content="https://sade78.fr/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="SADE France">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://sade78.fr/contact.html">
+<meta name="twitter:title" content="Contact — SADE France">
+<meta name="twitter:description" content="Prenez rendez-vous avec SADE France pour un premier entretien gratuit et confidentiel.">
+<meta name="twitter:image" content="https://sade78.fr/assets/og-image.png">
+
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" type="image/png" href="assets/logo-cropped.png">
 <style>
   .contact-page{
     display:grid;
@@ -261,6 +285,21 @@
     <a href="#form" class="btn">Prendre RDV</a>
   </nav>
 
+  <!-- ============================================================
+       CONTENU PRINCIPAL : CONTACT
+       ============================================================
+       Page en 2 colonnes : à gauche un bloc bleu avec coordonnées,
+       à droite le formulaire de contact.
+       
+       🔧 MODIFIER LES COORDONNÉES :
+          Cherchez "contact-list" ci-dessous (téléphone, email, adresse, horaires).
+       
+       🔧 MODIFIER LES CHAMPS DU FORMULAIRE :
+          Cherchez <form id="contactForm">
+       
+       🔧 BRANCHEMENT EMAIL (envoi réel) :
+          Voir le script en bas de page.
+       ============================================================ -->
   <main class="main">
     <section class="contact-page">
 
@@ -270,26 +309,27 @@
           <h1>Parlons de votre situation.</h1>
           <p>Premier rendez-vous gratuit, confidentiel, sans engagement. Nous revenons vers vous sous 48 heures ouvrées.</p>
 
+          <!-- 🔧 COORDONNÉES — modifiez tel, email, adresse, horaires ici -->
           <div class="contact-list">
             <div class="contact-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <div class="contact-item-text">
                 <div class="label">Téléphone</div>
-                <div class="value"><a href="tel:+33123456789">+33 (0)1 23 45 67 89</a></div>
+                <div class="value"><a href="tel:+33649638403">+33 6 49 63 84 03</a></div>
               </div>
             </div>
             <div class="contact-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <div class="contact-item-text">
                 <div class="label">Email</div>
-                <div class="value"><a href="mailto:contact@sade-france.fr">contact@sade-france.fr</a></div>
+                <div class="value"><a href="mailto:contact@sade78.fr">contact@sade78.fr</a></div>
               </div>
             </div>
             <div class="contact-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <div class="contact-item-text">
                 <div class="label">Adresse</div>
-                <div class="value">12 rue de la République<br>78000 Versailles</div>
+                <div class="value">5 rue Charles Denet<br>27000 Évreux</div>
               </div>
             </div>
             <div class="contact-item">
@@ -312,6 +352,11 @@
         <h2>Décrivez votre demande.</h2>
         <p class="lead">Tous les champs marqués d'un astérisque sont obligatoires.</p>
 
+        <!-- 🔧 FORMULAIRE DE CONTACT
+              Pour activer l'envoi réel par email, modifiez l'attribut "action" :
+              <form action="https://formspree.io/f/VOTRE_ID" method="POST">
+              ou ajoutez un script PHP côté serveur.
+        -->
         <form id="contactForm" novalidate>
 
           <div class="form-row">
@@ -374,8 +419,8 @@
   <footer class="footer">
     <div class="copy">© 2026 SADE FRANCE — Tous droits réservés</div>
     <div class="footer-links">
-      <a href="#">Mentions légales</a>
-      <a href="#">Confidentialité</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Confidentialité</a>
       <a href="#" class="footer-social" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
       </a>
@@ -397,12 +442,35 @@
   navClose.addEventListener('click',()=>toggleMenu(false));
   navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
 
+  // ============================================================
+  // GESTION DU FORMULAIRE DE CONTACT
+  // ============================================================
+  // Au submit, on intercepte la soumission, on simule l'envoi,
+  // puis on redirige l'utilisateur vers la page de confirmation.
+  //
+  // 🔧 IMPORTANT : pour un envoi réel par email, vous devrez :
+  //   - soit utiliser un service comme Formspree (https://formspree.io)
+  //     en remplaçant l'attribut `action` du <form>
+  //   - soit ajouter un script PHP côté serveur (mail.php)
+  //   - soit utiliser une fonction serverless (Vercel/Netlify)
+  //
+  // Pour Formspree par exemple :
+  //   <form action="https://formspree.io/f/VOTRE_ID" method="POST">
+  //   et le JS ci-dessous deviendra inutile (le service fait la redirection)
+  // ============================================================
   document.getElementById('contactForm').addEventListener('submit', e => {
     e.preventDefault();
+
+    // Affiche un message de succès rapide (au cas où la redirection traîne)
     const status = document.getElementById('formStatus');
     status.classList.add('show');
-    e.target.reset();
-    setTimeout(()=>status.classList.remove('show'), 6000);
+    status.textContent = 'Envoi en cours...';
+
+    // Petit délai pour laisser le visiteur voir le message,
+    // puis redirection vers la page de confirmation
+    setTimeout(() => {
+      window.location.href = 'merci.html';
+    }, 600);
   });
 </script>
 </body>

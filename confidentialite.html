@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Politique de confidentialité — SADE France</title>
+<meta name="description" content="Politique de confidentialité du site SADE France — Service d'Accompagnement des Démarches Étrangères. Conformité RGPD.">
+
+<!-- Favicon (juste le S dans l'hexagone bleu) -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sade78.fr/confidentialite.html">
+<meta property="og:title" content="Politique de confidentialité — SADE France">
+<meta property="og:description" content="Comment nous protégeons vos données personnelles.">
+<meta property="og:image" content="https://sade78.fr/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="SADE France">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sade78.fr/assets/og-image.png">
+
+<link rel="stylesheet" href="styles.css">
+
+<!-- ============================================================
+     STYLES IDENTIQUES À LA PAGE MENTIONS LÉGALES
+     On les inline ici pour garder chaque page autonome.
+     Si vous voulez factoriser, déplacez ces styles dans styles.css.
+     ============================================================ -->
+<style>
+  .legal-page{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    height:100%;
+  }
+
+  /* ===== Sidebar bleue ===== */
+  .legal-sidebar{
+    background:var(--c-blue);
+    color:var(--c-white);
+    padding:clamp(28px, 4vh, 48px) clamp(20px, 2.5vw, 32px);
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+    overflow-x:hidden;
+    position:relative;
+  }
+  .legal-sidebar::before{
+    content:'';
+    position:absolute;
+    bottom:-150px;left:-100px;
+    width:400px;height:400px;
+    background:radial-gradient(circle,var(--c-indigo) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  .legal-sidebar > *{position:relative;z-index:2}
+  .legal-sidebar h1{
+    color:var(--c-white);
+    font-size:clamp(22px, 2.5vw, 30px);
+    margin:clamp(12px, 1.8vh, 18px) 0;
+    line-height:1.1;
+  }
+  .legal-sidebar > p{
+    color:rgba(255,255,255,.85);
+    font-size:13px;
+    line-height:1.55;
+    margin-bottom:clamp(20px, 3vh, 28px);
+  }
+
+  /* Navigation entre les 2 pages légales */
+  .legal-tabs{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .legal-tabs a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:clamp(14px, 2vh, 18px) 0;
+    border-bottom:1px solid rgba(255,255,255,.18);
+    color:var(--c-white);
+    transition:padding var(--t);
+  }
+  .legal-tabs a:hover{padding-left:6px}
+  .legal-tabs a.active{padding-left:6px}
+  .legal-tab-num{
+    font-size:11px;
+    color:rgba(255,255,255,.6);
+    letter-spacing:1px;
+    font-weight:500;
+    flex-shrink:0;
+    width:30px;
+  }
+  .legal-tab-name{font-size:14.5px;font-weight:500;flex:1}
+  .legal-tabs a.active .legal-tab-name{font-weight:600}
+  .legal-tab-arrow{
+    width:14px;height:14px;
+    opacity:0;
+    transform:translateX(-6px);
+    transition:all var(--t);
+    flex-shrink:0;
+  }
+  .legal-tabs a.active .legal-tab-arrow{opacity:1;transform:translateX(0)}
+
+  .legal-sidebar-foot{
+    margin-top:auto;
+    padding-top:clamp(16px, 2.5vh, 24px);
+    border-top:1px solid rgba(255,255,255,.18);
+    font-size:12px;
+    color:rgba(255,255,255,.7);
+    line-height:1.5;
+  }
+  .legal-sidebar-foot strong{color:#fff}
+
+  /* ===== Panneau de contenu ===== */
+  .legal-panel{
+    padding:clamp(28px, 4vh, 48px) clamp(24px, 3vw, 56px);
+    background:var(--c-white);
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+  .legal-panel::-webkit-scrollbar{width:4px}
+  .legal-panel::-webkit-scrollbar-thumb{background:var(--c-gray)}
+
+  .legal-panel > .eyebrow{margin-bottom:clamp(10px, 1.5vh, 14px)}
+  .legal-panel h2{
+    margin:clamp(8px, 1vh, 12px) 0 clamp(20px, 3vh, 28px);
+    max-width:600px;
+  }
+
+  /* Sections */
+  .legal-section{
+    padding:clamp(16px, 2vh, 22px) 0;
+    border-top:1px solid var(--c-gray);
+  }
+  .legal-section:first-of-type{border-top:none;padding-top:0}
+  .legal-section h3{
+    color:var(--c-blue);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:clamp(10px, 1.2vh, 14px);
+  }
+  .legal-section p{
+    font-size:14px;
+    line-height:1.65;
+    color:var(--c-black);
+    margin-bottom:8px;
+    max-width:760px;
+  }
+  .legal-section p strong{color:var(--c-black);font-weight:600}
+  .legal-section p:last-child{margin-bottom:0}
+  .legal-section ul{
+    margin:6px 0 0 0;
+    padding-left:20px;
+    list-style:disc;
+  }
+  .legal-section ul li{
+    font-size:14px;
+    line-height:1.65;
+    color:var(--c-text-muted);
+    margin-bottom:6px;
+  }
+  .legal-section ul li strong{color:var(--c-black)}
+  .legal-section a{
+    color:var(--c-blue);
+    border-bottom:1px solid var(--c-blue);
+    padding-bottom:1px;
+  }
+  .legal-section a:hover{color:var(--c-indigo)}
+
+  .legal-note{
+    background:var(--c-gray-2);
+    border-left:3px solid var(--c-blue);
+    padding:14px 18px;
+    margin-top:16px;
+    font-size:13px;
+    color:var(--c-text-muted);
+    line-height:1.55;
+  }
+  .legal-note strong{color:var(--c-black)}
+
+  /* ===== Mobile ===== */
+  @media (max-width:860px){
+    .legal-page{
+      grid-template-columns:1fr;
+      height:auto;
+    }
+    .legal-sidebar{
+      padding:32px var(--pad-x);
+      overflow:visible;
+    }
+    .legal-sidebar h1{font-size:26px;margin:10px 0 12px}
+    .legal-tabs{
+      flex-direction:row;
+      gap:0;
+      border-top:none;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      margin:0 -4px;
+      padding:0 4px;
+    }
+    .legal-tabs::-webkit-scrollbar{display:none}
+    .legal-tabs a{
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      padding:10px 16px;
+      border-bottom:none;
+      border-right:1px solid rgba(255,255,255,.18);
+      gap:4px;
+      flex-shrink:0;
+    }
+    .legal-tabs a:last-child{border-right:none}
+    .legal-tabs a:hover,
+    .legal-tabs a.active{padding-left:16px}
+    .legal-tab-arrow{display:none}
+    .legal-tab-num{width:auto;font-size:10px}
+    .legal-tab-name{font-size:13px;white-space:nowrap}
+    .legal-tabs a.active{background:rgba(255,255,255,.12)}
+    .legal-sidebar-foot{display:none}
+    .legal-panel{padding:28px var(--pad-x);overflow:visible}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo-link" aria-label="SADE France - Accueil">
+      <img src="assets/logo-cropped.png" alt="SADE France" class="logo-img">
+    </a>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="cabinet.html">Le cabinet</a></li>
+        <li><a href="services.html">Nos services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="btn">
+      Prendre RDV
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <!-- DRAWER MOBILE -->
+  <nav class="nav-mobile" id="navMobile">
+    <div class="nav-mobile-head">
+      <a href="index.html" class="logo-link"><img src="assets/logo-light-text.png" alt="SADE France" class="logo-img"></a>
+      <button class="nav-mobile-close" id="navClose" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <a href="index.html">Accueil</a>
+    <a href="cabinet.html">Le cabinet</a>
+    <a href="services.html">Nos services</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn">Prendre RDV</a>
+  </nav>
+
+  <!-- CONTENU -->
+  <main class="main">
+    <section class="legal-page">
+
+      <!-- Sidebar : navigation entre les 2 pages légales -->
+      <div class="legal-sidebar">
+        <div class="eyebrow light">Informations légales</div>
+        <h1>Mentions légales et confidentialité.</h1>
+        <p>Documents conformes à la loi française et au règlement européen sur la protection des données.</p>
+
+        <nav class="legal-tabs">
+          <a href="mentions-legales.html">
+            <span class="legal-tab-num">/01</span>
+            <span class="legal-tab-name">Mentions légales</span>
+            <svg class="legal-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="confidentialite.html" class="active">
+            <span class="legal-tab-num">/02</span>
+            <span class="legal-tab-name">Politique de confidentialité</span>
+            <svg class="legal-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </nav>
+
+        <div class="legal-sidebar-foot">
+          <strong>Mise à jour</strong><br>
+          Janvier 2026
+        </div>
+      </div>
+
+      <!-- Panel : contenu de la confidentialité -->
+      <div class="legal-panel">
+        <div class="eyebrow">/02 — Document légal</div>
+        <h2>Politique de confidentialité</h2>
+
+        <!-- Responsable de traitement -->
+        <div class="legal-section">
+          <h3>Responsable du traitement</h3>
+          <p><strong>SADE — M. Luc Samson Tchiakpe</strong></p>
+          <p>5 rue Charles Denet, 27000 Évreux</p>
+          <p>
+            Email : <a href="mailto:contact@sade78.fr">contact@sade78.fr</a><br>
+            Téléphone : <a href="tel:+33649638403">+33 6 49 63 84 03</a>
+          </p>
+        </div>
+
+        <!-- Données collectées -->
+        <div class="legal-section">
+          <h3>Données collectées</h3>
+          <p>Dans le cadre de ses services, SADE collecte les données suivantes :</p>
+          <ul>
+            <li><strong>Via le formulaire de contact :</strong> nom, prénom, email, téléphone, message.</li>
+            <li><strong>Dans le cadre du suivi d'un dossier client :</strong> pièces d'identité, justificatifs de domicile, documents administratifs nécessaires à la démarche (titre de séjour, état civil, ressources, etc.).</li>
+          </ul>
+        </div>
+
+        <!-- Finalités -->
+        <div class="legal-section">
+          <h3>Finalités</h3>
+          <p>Vos données sont traitées pour :</p>
+          <ul>
+            <li>Répondre à vos demandes</li>
+            <li>Constituer et suivre vos dossiers administratifs</li>
+            <li>Vous adresser les informations relatives à votre prestation</li>
+            <li>Respecter les obligations légales et comptables (conservation des factures pendant 10 ans)</li>
+          </ul>
+        </div>
+
+        <!-- Base légale -->
+        <div class="legal-section">
+          <h3>Base légale</h3>
+          <p>Les traitements reposent sur :</p>
+          <ul>
+            <li>Votre <strong>consentement</strong> (formulaire de contact)</li>
+            <li>L'<strong>exécution du contrat</strong> de prestation</li>
+            <li>Le respect d'<strong>obligations légales</strong> (comptabilité, lutte anti-blanchiment)</li>
+          </ul>
+        </div>
+
+        <!-- Destinataires -->
+        <div class="legal-section">
+          <h3>Destinataires</h3>
+          <p>Vos données sont strictement réservées à SADE et, le cas échéant, aux administrations destinataires de votre dossier (préfecture, OFII, CAF, CPAM, etc.) avec votre accord.</p>
+          <p><strong>Aucune donnée n'est revendue à des tiers.</strong></p>
+        </div>
+
+        <!-- Durée de conservation -->
+        <div class="legal-section">
+          <h3>Durée de conservation</h3>
+          <ul>
+            <li>Demandes via formulaire sans suite : <strong>3 ans</strong></li>
+            <li>Dossiers clients : <strong>5 ans</strong> après la fin de la prestation</li>
+            <li>Documents comptables : <strong>10 ans</strong> (obligation légale)</li>
+          </ul>
+        </div>
+
+        <!-- Vos droits -->
+        <div class="legal-section">
+          <h3>Vos droits</h3>
+          <p>Conformément au RGPD et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition, de limitation et de portabilité de vos données.</p>
+          <p>Vous pouvez les exercer à tout moment en écrivant à <a href="mailto:contact@sade78.fr">contact@sade78.fr</a>, accompagné d'un justificatif d'identité.</p>
+          <p>En cas de désaccord sur le traitement de vos données, vous pouvez introduire une réclamation auprès de la <strong>CNIL</strong> (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a> — 3 place de Fontenoy, 75007 Paris).</p>
+        </div>
+
+        <!-- Cookies -->
+        <div class="legal-section">
+          <h3>Cookies</h3>
+          <p>Le site sade78.fr utilise des cookies strictement nécessaires à son fonctionnement et, le cas échéant, des cookies de mesure d'audience. Un bandeau vous permet de les accepter ou de les refuser lors de votre première visite. Vous pouvez modifier vos préférences à tout moment depuis votre navigateur.</p>
+        </div>
+
+        <!-- Sécurité -->
+        <div class="legal-section">
+          <h3>Sécurité</h3>
+          <p>SADE met en œuvre les mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte ou divulgation.</p>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="copy">© 2026 SADE FRANCE — Tous droits réservés</div>
+    <div class="footer-links">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="#" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Menu mobile (identique à toutes les pages)
+  const burger = document.getElementById('burger');
+  const navMobile = document.getElementById('navMobile');
+  const navClose = document.getElementById('navClose');
+  function toggleMenu(open){
+    burger.classList.toggle('is-open', open);
+    navMobile.classList.toggle('is-open', open);
+    document.body.classList.toggle('no-scroll', open);
+  }
+  burger.addEventListener('click',()=>toggleMenu(!navMobile.classList.contains('is-open')));
+  navClose.addEventListener('click',()=>toggleMenu(false));
+  navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+</script>
+</body>
+</html>

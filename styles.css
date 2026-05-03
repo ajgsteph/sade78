@@ -130,17 +130,33 @@ h4{font-size:14px; font-weight:600; letter-spacing:.5px}
 
 /* =========================================
    LOGO
-   ========================================= */
+   =========================================
+   Le logo principal (texte+hexagone) a un ratio d'environ 2.6:1
+   On lui fixe une hauteur précise et on laisse la largeur s'adapter.
+   `object-fit:contain` garantit qu'il ne sera JAMAIS déformé,
+   même si un parent essaye de le compresser.
+*/
 .logo-link{
   display:flex;
   align-items:center;
-  flex-shrink:0;
+  flex-shrink:0;       /* Ne pas se rétracter quand le header devient étroit */
   height:42px;
+  max-width:180px;     /* Limite max pour éviter qu'il dévore le header */
 }
-.logo-img{height:100%;width:auto;display:block}
+.logo-img{
+  height:100%;
+  width:auto;
+  max-width:100%;
+  object-fit:contain;  /* Préserve les proportions, AUCUNE déformation possible */
+  display:block;
+}
 
-@media (max-width: 520px){
-  .logo-link{height:36px}
+/* Sur petits écrans : on réduit la hauteur (le ratio est conservé automatiquement) */
+@media (max-width: 600px){
+  .logo-link{height:36px;max-width:150px}
+}
+@media (max-width: 380px){
+  .logo-link{height:32px;max-width:130px}
 }
 
 /* =========================================
