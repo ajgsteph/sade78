@@ -50,12 +50,17 @@
     position:relative;
   }
   .svc-sidebar::before{
+    /* Halo indigo désactivé : il débordait sur le contenu blanc en mobile (au-dessus du panel d'accordéon)
+       et créait une ombre bleue parasite sous le titre.
+       Pour réactiver, décommenter ci-dessous. */
+    /*
     content:'';
     position:absolute;
     bottom:-150px;left:-100px;
     width:400px;height:400px;
     background:radial-gradient(circle,var(--c-indigo) 0%,transparent 65%);
     pointer-events:none;
+    */
   }
   .svc-sidebar > *{position:relative;z-index:2}
   .svc-sidebar h1{
@@ -406,15 +411,7 @@
           <div class="svc-features">
             <div class="svc-feature">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-              <p>Carte de séjour temporaire (vie privée et familiale, salarié, étudiant)</p>
-            </div>
-            <div class="svc-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-              <p>Carte pluriannuelle et carte de résident (10 ans)</p>
-            </div>
-            <div class="svc-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-              <p>Changement de statut, admission exceptionnelle au séjour</p>
+              <p>Première demande, renouvellement, changement de statut</p>
             </div>
             <div class="svc-feature">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
@@ -434,10 +431,8 @@
           <h2>Naturalisation</h2>
           <p class="lead">Devenir français est l'aboutissement d'un parcours d'intégration. Nous vous accompagnons dans la constitution complète de votre dossier.</p>
           <div class="svc-features">
-            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Naturalisation par décret après 5 ans de résidence</p></div>
-            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Déclaration de nationalité (mariage, ascendance)</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Naturalisation par décret ou déclaration de nationalité</p></div>
             <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Préparation à l'entretien d'assimilation</p></div>
-            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Test de niveau B1 et livret du citoyen</p></div>
           </div>
           <div class="svc-actions">
             <p><strong>Forfait sur devis personnalisé</strong> · accompagnement complet jusqu'au décret</p>
@@ -453,9 +448,7 @@
           <p class="lead">Faire venir son conjoint et ses enfants en France est un droit fondamental, mais une procédure exigeante. Nous construisons un dossier solide.</p>
           <div class="svc-features">
             <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Demande de regroupement familial à l'OFII</p></div>
-            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Vérification des conditions de ressources et logement</p></div>
             <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Visa long séjour pour la famille à l'étranger</p></div>
-            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Procédure « membre de famille de Français »</p></div>
           </div>
           <div class="svc-actions">
             <p><strong>Forfait sur devis personnalisé</strong> · de la demande au visa</p>
