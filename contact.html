@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Contact — SADE France</title>
+<meta name="description" content="Prenez rendez-vous avec SADE France pour un premier entretien gratuit et confidentiel.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/logo-cropped.png">
+<style>
+  .contact-page{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    height:100%;
+  }
+
+  /* LEFT - Infos */
+  .contact-info{
+    background:var(--c-blue);
+    color:var(--c-white);
+    padding:clamp(28px, 4vh, 48px) clamp(24px, 3vw, 44px);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact-info::before{
+    content:'';
+    position:absolute;
+    bottom:-180px;left:-180px;
+    width:500px;height:500px;
+    background:radial-gradient(circle,var(--c-indigo) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  .contact-info > *{position:relative;z-index:2}
+
+  .contact-info h1{
+    color:var(--c-white);
+    font-size:clamp(24px, 3vw, 38px);
+    margin:clamp(12px, 1.8vh, 18px) 0 clamp(12px, 1.8vh, 16px);
+    line-height:1.05;
+  }
+  .contact-info > p{
+    color:rgba(255,255,255,.85);
+    font-size:13.5px;
+    line-height:1.55;
+    margin-bottom:clamp(20px, 3vh, 28px);
+    max-width:380px;
+  }
+
+  .contact-list{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .contact-item{
+    display:flex;
+    gap:14px;
+    padding:clamp(12px, 1.8vh, 16px) 0;
+    border-bottom:1px solid rgba(255,255,255,.18);
+  }
+  .contact-item svg{
+    flex-shrink:0;
+    width:18px;height:18px;
+    margin-top:2px;
+    color:var(--c-white);
+  }
+  .contact-item-text{flex:1;min-width:0}
+  .contact-item .label{
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.6);
+    font-weight:500;
+    margin-bottom:3px;
+  }
+  .contact-item .value{
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--c-white);
+    line-height:1.4;
+    word-break:break-word;
+  }
+  .contact-item a:hover{text-decoration:underline}
+
+  .contact-info-foot{
+    margin-top:clamp(16px, 2.5vh, 22px);
+    padding-top:clamp(14px, 2vh, 20px);
+    border-top:1px solid rgba(255,255,255,.18);
+    font-size:12px;
+    color:rgba(255,255,255,.7);
+    line-height:1.5;
+  }
+  .contact-info-foot strong{color:#fff}
+
+  /* RIGHT - Form */
+  .contact-form{
+    padding:clamp(28px, 4vh, 48px) clamp(24px, 3vw, 56px);
+    background:var(--c-white);
+    overflow-y:auto;
+    overflow-x:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .contact-form::-webkit-scrollbar{width:4px}
+  .contact-form::-webkit-scrollbar-thumb{background:var(--c-gray)}
+
+  .contact-form h2{
+    margin:clamp(10px, 1.5vh, 14px) 0 clamp(6px, 1vh, 10px);
+  }
+  .contact-form > p.lead{
+    margin-bottom:clamp(18px, 2.8vh, 26px);
+    max-width:560px;
+  }
+
+  .form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(10px, 1.2vw, 16px);
+    margin-bottom:clamp(10px, 1.5vh, 14px);
+  }
+  .form-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-bottom:clamp(10px, 1.5vh, 14px);
+  }
+  .form-group label{
+    font-size:11.5px;
+    font-weight:500;
+    letter-spacing:.5px;
+    color:var(--c-black);
+    text-transform:uppercase;
+  }
+  .req{color:var(--c-blue)}
+  .form-control{
+    width:100%;
+    padding:clamp(11px, 1.5vh, 13px) 14px;
+    font-family:var(--font);
+    font-size:14px;
+    background:var(--c-white);
+    border:1px solid var(--c-gray);
+    color:var(--c-black);
+    transition:border-color var(--t),box-shadow var(--t);
+    border-radius:0;
+  }
+  .form-control:focus{
+    outline:none;
+    border-color:var(--c-blue);
+    box-shadow:0 0 0 2px rgba(47,27,249,.15);
+  }
+  .form-control::placeholder{color:var(--c-gray-3)}
+  textarea.form-control{
+    resize:vertical;
+    min-height:90px;
+    font-family:var(--font);
+  }
+
+  .form-submit-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    margin-top:clamp(14px, 2vh, 18px);
+    padding-top:clamp(14px, 2vh, 18px);
+    border-top:1px solid var(--c-gray);
+    flex-wrap:wrap;
+  }
+  .form-submit-row .note{
+    font-size:11.5px;
+    color:var(--c-text-muted);
+    flex:1;
+    min-width:160px;
+    line-height:1.5;
+  }
+
+  .form-success{
+    display:none;
+    margin-top:14px;
+    padding:14px 18px;
+    background:rgba(47,27,249,.06);
+    border-left:3px solid var(--c-blue);
+    color:var(--c-blue);
+    font-size:13.5px;
+    font-weight:500;
+  }
+  .form-success.show{display:block}
+
+  /* Mobile */
+  @media (max-width:860px){
+    .contact-page{
+      grid-template-columns:1fr;
+      height:auto;
+    }
+    .contact-info{padding:36px var(--pad-x) 32px}
+    .contact-info h1{font-size:28px;margin:14px 0 14px}
+    .contact-info > p{display:block;max-width:100%}
+
+    .contact-list{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      border:1px solid rgba(255,255,255,.18);
+      border-bottom:none;
+    }
+    .contact-item{
+      padding:14px 16px;
+      border-bottom:1px solid rgba(255,255,255,.18);
+      border-right:1px solid rgba(255,255,255,.18);
+    }
+    .contact-item:nth-child(2n){border-right:none}
+
+    .contact-form{padding:36px var(--pad-x);overflow:visible}
+    textarea.form-control{min-height:120px}
+  }
+  @media (max-width:600px){
+    .form-row{grid-template-columns:1fr;gap:0}
+    .contact-list{grid-template-columns:1fr;border:none;border-top:1px solid rgba(255,255,255,.18)}
+    .contact-item{
+      padding:12px 0;
+      border-right:none !important;
+    }
+    .form-submit-row{flex-direction:column;align-items:stretch;gap:12px}
+    .form-submit-row .btn{justify-content:center}
+    .form-submit-row .note{min-width:0;text-align:center}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <a href="index.html" class="logo-link"><img src="assets/logo-cropped.png" alt="SADE France" class="logo-img"></a>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="cabinet.html">Le cabinet</a></li>
+        <li><a href="services.html">Nos services</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#form" class="btn">Prendre RDV
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile">
+    <div class="nav-mobile-head">
+      <a href="index.html" class="logo-link"><img src="assets/logo-light-text.png" alt="SADE France" class="logo-img"></a>
+      <button class="nav-mobile-close" id="navClose" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <a href="index.html">Accueil</a>
+    <a href="cabinet.html">Le cabinet</a>
+    <a href="services.html">Nos services</a>
+    <a href="contact.html">Contact</a>
+    <a href="#form" class="btn">Prendre RDV</a>
+  </nav>
+
+  <main class="main">
+    <section class="contact-page">
+
+      <div class="contact-info">
+        <div>
+          <div class="eyebrow light">Nous écrire</div>
+          <h1>Parlons de votre situation.</h1>
+          <p>Premier rendez-vous gratuit, confidentiel, sans engagement. Nous revenons vers vous sous 48 heures ouvrées.</p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div class="contact-item-text">
+                <div class="label">Téléphone</div>
+                <div class="value"><a href="tel:+33123456789">+33 (0)1 23 45 67 89</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div class="contact-item-text">
+                <div class="label">Email</div>
+                <div class="value"><a href="mailto:contact@sade-france.fr">contact@sade-france.fr</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div class="contact-item-text">
+                <div class="label">Adresse</div>
+                <div class="value">12 rue de la République<br>78000 Versailles</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div class="contact-item-text">
+                <div class="label">Horaires</div>
+                <div class="value">Lun. – Ven. · 9h – 18h</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-foot">
+          <strong>🔒 Confidentialité garantie.</strong> Vos informations restent strictement confidentielles et ne sont en aucun cas partagées avec des tiers.
+        </div>
+      </div>
+
+      <div class="contact-form" id="form">
+        <div class="eyebrow">Formulaire</div>
+        <h2>Décrivez votre demande.</h2>
+        <p class="lead">Tous les champs marqués d'un astérisque sont obligatoires.</p>
+
+        <form id="contactForm" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstname">Prénom <span class="req">*</span></label>
+              <input type="text" id="firstname" name="firstname" class="form-control" required placeholder="Jean">
+            </div>
+            <div class="form-group">
+              <label for="lastname">Nom <span class="req">*</span></label>
+              <input type="text" id="lastname" name="lastname" class="form-control" required placeholder="Dupont">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" class="form-control" required placeholder="exemple@email.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="+33 6 12 34 56 78">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Type de démarche <span class="req">*</span></label>
+            <select id="subject" name="subject" class="form-control" required>
+              <option value="">— Sélectionnez votre demande —</option>
+              <option>Titre de séjour</option>
+              <option>Naturalisation</option>
+              <option>Regroupement familial</option>
+              <option>Demande d'asile</option>
+              <option>Recours / OQTF</option>
+              <option>Autre / je ne sais pas</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Décrivez votre situation <span class="req">*</span></label>
+            <textarea id="message" name="message" class="form-control" required placeholder="Indiquez votre situation actuelle, votre date d'arrivée en France si applicable, et tout élément utile..."></textarea>
+          </div>
+
+          <div class="form-submit-row">
+            <p class="note">En envoyant, vous acceptez le traitement de vos données conformément à notre politique de confidentialité.</p>
+            <button type="submit" class="btn btn--lg">
+              Envoyer ma demande
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <div id="formStatus" class="form-success">
+            ✓ Votre message a bien été envoyé. Nous reviendrons vers vous sous 48 heures ouvrées.
+          </div>
+        </form>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="copy">© 2026 SADE FRANCE — Tous droits réservés</div>
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+      <a href="#" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const burger = document.getElementById('burger');
+  const navMobile = document.getElementById('navMobile');
+  const navClose = document.getElementById('navClose');
+  function toggleMenu(open){
+    burger.classList.toggle('is-open', open);
+    navMobile.classList.toggle('is-open', open);
+    document.body.classList.toggle('no-scroll', open);
+  }
+  burger.addEventListener('click',()=>toggleMenu(!navMobile.classList.contains('is-open')));
+  navClose.addEventListener('click',()=>toggleMenu(false));
+  navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    status.classList.add('show');
+    e.target.reset();
+    setTimeout(()=>status.classList.remove('show'), 6000);
+  });
+</script>
+</body>
+</html>

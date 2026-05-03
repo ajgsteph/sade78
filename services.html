@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Nos services — SADE France</title>
+<meta name="description" content="Titre de séjour, naturalisation, regroupement familial, demande d'asile : nos 4 expertises.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/logo-cropped.png">
+<style>
+  .services-page{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    height:100%;
+  }
+
+  /* Sidebar */
+  .svc-sidebar{
+    background:var(--c-blue);
+    color:var(--c-white);
+    padding:clamp(28px, 4vh, 48px) clamp(20px, 2.5vw, 32px);
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+    overflow-x:hidden;
+    position:relative;
+  }
+  .svc-sidebar::before{
+    content:'';
+    position:absolute;
+    bottom:-150px;left:-100px;
+    width:400px;height:400px;
+    background:radial-gradient(circle,var(--c-indigo) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  .svc-sidebar > *{position:relative;z-index:2}
+  .svc-sidebar h1{
+    color:var(--c-white);
+    font-size:clamp(22px, 2.5vw, 30px);
+    margin:clamp(12px, 1.8vh, 18px) 0;
+    line-height:1.1;
+  }
+  .svc-sidebar > p{
+    color:rgba(255,255,255,.85);
+    font-size:13px;
+    line-height:1.55;
+    margin-bottom:clamp(20px, 3vh, 28px);
+  }
+
+  .svc-tabs{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .svc-tab{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:clamp(14px, 2vh, 18px) 0;
+    border-bottom:1px solid rgba(255,255,255,.18);
+    cursor:pointer;
+    color:var(--c-white);
+    transition:padding var(--t);
+    text-align:left;
+    width:100%;
+  }
+  .svc-tab:hover{padding-left:6px}
+  .svc-tab-num{
+    font-size:11px;
+    color:rgba(255,255,255,.6);
+    letter-spacing:1px;
+    font-weight:500;
+    flex-shrink:0;
+    width:30px;
+  }
+  .svc-tab-name{
+    font-size:14.5px;
+    font-weight:500;
+    flex:1;
+    transition:color var(--t);
+  }
+  .svc-tab-arrow{
+    width:14px;height:14px;
+    opacity:0;
+    transform:translateX(-6px);
+    transition:all var(--t);
+    flex-shrink:0;
+  }
+  .svc-tab.active{padding-left:6px}
+  .svc-tab.active .svc-tab-arrow{opacity:1;transform:translateX(0)}
+  .svc-tab.active .svc-tab-name{font-weight:600}
+
+  .svc-sidebar-foot{
+    margin-top:auto;
+    padding-top:clamp(16px, 2.5vh, 24px);
+    border-top:1px solid rgba(255,255,255,.18);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .svc-sidebar-foot p{
+    font-size:12px;
+    color:rgba(255,255,255,.7);
+    line-height:1.5;
+  }
+
+  /* Panel */
+  .svc-panel{
+    padding:clamp(28px, 4vh, 56px) clamp(24px, 3vw, 56px);
+    background:var(--c-white);
+    overflow-y:auto;
+    overflow-x:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .svc-panel::-webkit-scrollbar{width:4px}
+  .svc-panel::-webkit-scrollbar-thumb{background:var(--c-gray)}
+
+  .svc-content{display:none;animation:fadeIn .4s ease}
+  .svc-content.active{display:block}
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  .svc-content h2{
+    margin:clamp(12px, 1.8vh, 18px) 0 clamp(14px, 2vh, 20px);
+    max-width:600px;
+  }
+  .svc-content > .lead{
+    margin-bottom:clamp(20px, 3vh, 28px);
+    max-width:640px;
+  }
+
+  .svc-features{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(10px, 1.5vh, 14px);
+    margin-bottom:clamp(20px, 3vh, 28px);
+  }
+  .svc-feature{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:clamp(12px, 1.8vh, 16px) clamp(12px, 1.5vw, 18px);
+    background:var(--c-gray-2);
+    border-left:2px solid var(--c-blue);
+  }
+  .svc-feature svg{
+    flex-shrink:0;
+    width:18px;height:18px;
+    color:var(--c-blue);
+    margin-top:1px;
+  }
+  .svc-feature p{
+    font-size:clamp(12.5px, .92vw, 13.5px);
+    line-height:1.45;
+    color:var(--c-black);
+    font-weight:500;
+  }
+
+  .svc-actions{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-top:clamp(16px, 2.5vh, 22px);
+    padding-top:clamp(16px, 2.5vh, 22px);
+    border-top:1px solid var(--c-gray);
+  }
+  .svc-actions p{
+    font-size:12.5px;
+    color:var(--c-text-muted);
+    flex:1;
+    min-width:180px;
+  }
+  .svc-actions p strong{color:var(--c-black)}
+
+  /* ============================================
+     MOBILE : passage en accordéon
+     ============================================ */
+  @media (max-width:860px){
+    .services-page{
+      grid-template-columns:1fr;
+      height:auto;
+    }
+
+    /* Sidebar = section d'intro */
+    .svc-sidebar{
+      padding:36px var(--pad-x) 32px;
+      overflow:visible;
+    }
+    .svc-sidebar h1{font-size:28px;margin:14px 0 14px}
+    .svc-sidebar > p{margin-bottom:0;display:block}
+
+    /* On masque les onglets et le foot sur mobile : tout est dans le panel en accordéon */
+    .svc-tabs, .svc-sidebar-foot{display:none}
+
+    /* Panel = liste de tous les services en accordéon */
+    .svc-panel{
+      padding:0;
+      overflow:visible;
+      display:block;
+    }
+
+    /* Tous les contenus sont visibles sur mobile, en mode accordéon */
+    .svc-content{
+      display:block;
+      animation:none;
+      border-bottom:1px solid var(--c-gray);
+    }
+    .svc-content:last-child{border-bottom:none}
+
+    /* Header accordéon (le titre devient cliquable) */
+    .svc-content > .eyebrow,
+    .svc-content > h2 {
+      cursor:pointer;
+      user-select:none;
+      transition:color var(--t);
+    }
+    .svc-content > .eyebrow{
+      padding:24px var(--pad-x) 0;
+      margin:0;
+    }
+    .svc-content > h2{
+      padding:6px var(--pad-x) 0;
+      margin:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .svc-content > h2::after{
+      content:'+';
+      font-size:32px;
+      font-weight:300;
+      color:var(--c-blue);
+      transition:transform var(--t);
+      flex-shrink:0;
+    }
+    .svc-content.is-open > h2::after{
+      content:'−';
+    }
+
+    /* Contenu détaillé masqué par défaut, visible si .is-open */
+    .svc-content > .lead,
+    .svc-content > .svc-features,
+    .svc-content > .svc-actions{
+      display:none;
+      padding-left:var(--pad-x);
+      padding-right:var(--pad-x);
+    }
+    .svc-content.is-open > .lead{
+      display:block;
+      padding-top:14px;
+      padding-bottom:0;
+      margin-bottom:18px;
+    }
+    .svc-content.is-open > .svc-features{
+      display:grid;
+      margin-bottom:18px;
+    }
+    .svc-content.is-open > .svc-actions{
+      display:flex;
+      padding-bottom:24px;
+    }
+
+    /* Le 1er ouvert par défaut (déjà active=true sur titre) */
+    .svc-content[data-content="titre"].active{}
+
+    /* Hover sur le titre */
+    .svc-content:hover > h2{color:var(--c-blue)}
+  }
+
+  @media (max-width:600px){
+    .svc-features{grid-template-columns:1fr;gap:8px}
+    .svc-feature{padding:10px 14px}
+    .svc-actions{flex-direction:column;align-items:stretch;gap:10px}
+    .svc-actions p{min-width:0;text-align:left}
+    .svc-actions .btn{justify-content:center}
+    .svc-content > h2{font-size:20px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <a href="index.html" class="logo-link"><img src="assets/logo-cropped.png" alt="SADE France" class="logo-img"></a>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="cabinet.html">Le cabinet</a></li>
+        <li><a href="services.html" class="active">Nos services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="btn">Prendre RDV
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile">
+    <div class="nav-mobile-head">
+      <a href="index.html" class="logo-link"><img src="assets/logo-light-text.png" alt="SADE France" class="logo-img"></a>
+      <button class="nav-mobile-close" id="navClose" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <a href="index.html">Accueil</a>
+    <a href="cabinet.html">Le cabinet</a>
+    <a href="services.html">Nos services</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn">Prendre RDV</a>
+  </nav>
+
+  <main class="main">
+    <section class="services-page">
+
+      <!-- Sidebar / Intro -->
+      <div class="svc-sidebar">
+        <div class="eyebrow light">Domaines d'intervention</div>
+        <h1>Quatre expertises pour quatre étapes de vie en France.</h1>
+        <p>Sélectionnez un service pour découvrir notre accompagnement détaillé.</p>
+
+        <div class="svc-tabs" role="tablist">
+          <button class="svc-tab active" data-tab="titre" role="tab">
+            <span class="svc-tab-num">/01</span>
+            <span class="svc-tab-name">Titre de séjour</span>
+            <svg class="svc-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="svc-tab" data-tab="naturalisation" role="tab">
+            <span class="svc-tab-num">/02</span>
+            <span class="svc-tab-name">Naturalisation</span>
+            <svg class="svc-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="svc-tab" data-tab="regroupement" role="tab">
+            <span class="svc-tab-num">/03</span>
+            <span class="svc-tab-name">Regroupement familial</span>
+            <svg class="svc-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <button class="svc-tab" data-tab="asile" role="tab">
+            <span class="svc-tab-num">/04</span>
+            <span class="svc-tab-name">Demande d'asile</span>
+            <svg class="svc-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <div class="svc-sidebar-foot">
+          <p><strong style="color:#fff">Premier rendez-vous offert.</strong><br>Confidentiel et sans engagement.</p>
+          <a href="contact.html" class="btn btn--white">
+            Prendre RDV
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Panel / Accordéon -->
+      <div class="svc-panel">
+
+        <div class="svc-content active is-open" data-content="titre">
+          <div class="eyebrow">/01 — Droit au séjour</div>
+          <h2>Titre de séjour</h2>
+          <p class="lead">Que vous demandiez votre première carte ou que vous souhaitiez la renouveler, nous couvrons l'ensemble des typologies de titres délivrés en France.</p>
+          <div class="svc-features">
+            <div class="svc-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              <p>Carte de séjour temporaire (vie privée et familiale, salarié, étudiant)</p>
+            </div>
+            <div class="svc-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              <p>Carte pluriannuelle et carte de résident (10 ans)</p>
+            </div>
+            <div class="svc-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              <p>Changement de statut, admission exceptionnelle au séjour</p>
+            </div>
+            <div class="svc-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              <p>Recours en cas de refus ou d'OQTF</p>
+            </div>
+          </div>
+          <div class="svc-actions">
+            <p><strong>Forfait sur devis personnalisé</strong> · adapté à la complexité de votre dossier</p>
+            <a href="contact.html" class="btn">Démarrer mon dossier
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="svc-content" data-content="naturalisation">
+          <div class="eyebrow">/02 — Nationalité française</div>
+          <h2>Naturalisation</h2>
+          <p class="lead">Devenir français est l'aboutissement d'un parcours d'intégration. Nous vous accompagnons dans la constitution complète de votre dossier.</p>
+          <div class="svc-features">
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Naturalisation par décret après 5 ans de résidence</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Déclaration de nationalité (mariage, ascendance)</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Préparation à l'entretien d'assimilation</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Test de niveau B1 et livret du citoyen</p></div>
+          </div>
+          <div class="svc-actions">
+            <p><strong>Forfait sur devis personnalisé</strong> · accompagnement complet jusqu'au décret</p>
+            <a href="contact.html" class="btn">Démarrer mon dossier
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="svc-content" data-content="regroupement">
+          <div class="eyebrow">/03 — Vie familiale</div>
+          <h2>Regroupement familial</h2>
+          <p class="lead">Faire venir son conjoint et ses enfants en France est un droit fondamental, mais une procédure exigeante. Nous construisons un dossier solide.</p>
+          <div class="svc-features">
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Demande de regroupement familial à l'OFII</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Vérification des conditions de ressources et logement</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Visa long séjour pour la famille à l'étranger</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Procédure « membre de famille de Français »</p></div>
+          </div>
+          <div class="svc-actions">
+            <p><strong>Forfait sur devis personnalisé</strong> · de la demande au visa</p>
+            <a href="contact.html" class="btn">Démarrer mon dossier
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="svc-content" data-content="asile">
+          <div class="eyebrow">/04 — Protection internationale</div>
+          <h2>Demande d'asile</h2>
+          <p class="lead">Demander l'asile, c'est demander à un État qu'il vous protège. Nous vous accompagnons à chaque étape, de l'OFPRA à la CNDA.</p>
+          <div class="svc-features">
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Dépôt et préparation du dossier OFPRA</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Préparation de l'entretien à l'OFPRA</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Recours devant la CNDA</p></div>
+            <div class="svc-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><p>Protection subsidiaire et statut de réfugié</p></div>
+          </div>
+          <div class="svc-actions">
+            <p><strong>Forfait sur devis personnalisé</strong> · accompagnement humain et confidentiel</p>
+            <a href="contact.html" class="btn">Démarrer mon dossier
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="copy">© 2026 SADE FRANCE — Tous droits réservés</div>
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+      <a href="#" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Menu mobile
+  const burger = document.getElementById('burger');
+  const navMobile = document.getElementById('navMobile');
+  const navClose = document.getElementById('navClose');
+  function toggleMenu(open){
+    burger.classList.toggle('is-open', open);
+    navMobile.classList.toggle('is-open', open);
+    document.body.classList.toggle('no-scroll', open);
+  }
+  burger.addEventListener('click',()=>toggleMenu(!navMobile.classList.contains('is-open')));
+  navClose.addEventListener('click',()=>toggleMenu(false));
+  navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+
+  // Tabs (desktop)
+  const tabs = document.querySelectorAll('.svc-tab');
+  const contents = document.querySelectorAll('.svc-content');
+  function activate(name){
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+    contents.forEach(c => c.classList.toggle('active', c.dataset.content === name));
+  }
+  tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.dataset.tab)));
+
+  // Activation depuis le hash URL
+  const hashMap = {'titre-sejour':'titre','naturalisation':'naturalisation','regroupement':'regroupement','asile':'asile'};
+  const hash = window.location.hash.replace('#','');
+  if(hashMap[hash]){
+    activate(hashMap[hash]);
+    // En mobile, ouvrir l'accordéon du service ciblé et fermer les autres
+    if(window.innerWidth <= 860){
+      contents.forEach(c => c.classList.toggle('is-open', c.dataset.content === hashMap[hash]));
+    }
+  }
+
+  // Accordéon mobile (cliquer sur le titre h2 pour ouvrir/fermer)
+  contents.forEach(content => {
+    const h2 = content.querySelector('h2');
+    h2.addEventListener('click', e => {
+      // Ne fonctionne qu'en mobile
+      if(window.innerWidth > 860) return;
+      const wasOpen = content.classList.contains('is-open');
+      // Ferme tous les autres
+      contents.forEach(c => c.classList.remove('is-open'));
+      // Ouvre celui cliqué (s'il était fermé)
+      if(!wasOpen) content.classList.add('is-open');
+    });
+  });
+</script>
+</body>
+</html>
